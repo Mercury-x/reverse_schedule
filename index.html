@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逆向日程管理</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="app">
+        <div v-for="item in dataItems" :key="item.idx">
+            <div class="info-space">
+                <span>{{ item.time }}</span>
+                <select name="state" @change="updateState(item)">
+                    <option value="0" :selected="0===item.state">代办</option>
+                    <option value="1" :selected="1===item.state">已按时完成</option>
+                    <option value="2" :selected="2===item.state">需要另外安排时间</option>
+                </select>
+            </div>
+            <div class="input-space">
+                <textarea  id="" cols="80" rows="10" :value="item.content"></textarea>
+                <button @click="saveContent(item)">save</button>
+            </div>
+        </div>
+        <div class="message">
+            <p>{{ message }}</p>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="./index.js"></script>
+</html>
